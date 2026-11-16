@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #f0eee8;
+  --line: #e3e0d8;
+  --ink: #1d1c1a;
+  --muted: #6b6861;
+  --faint: #9b978e;
+  --accent: #2d5b4f;
+  --accent-ink: #ffffff;
+  --accent-soft: #e5eee9;
+  --good: #3b7a57;
+  --good-soft: #e3f0e8;
+  --warn: #a8701a;
+  --warn-soft: #f6ecd9;
+  --bad: #a9442f;
+  --bad-soft: #f6e3de;
+  --info: #3d5a86;
+  --info-soft: #e4eaf4;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #111312;
+  --surface: #181b1a;
+  --surface-2: #202423;
+  --line: #2c3130;
+  --ink: #eceae5;
+  --muted: #a09d96;
+  --faint: #6f6c66;
+  --accent: #86bba8;
+  --accent-ink: #0f1a16;
+  --accent-soft: #1d2b26;
+  --good: #7fbf98;
+  --good-soft: #1b2a21;
+  --warn: #d9a654;
+  --warn-soft: #2d2517;
+  --bad: #e08a75;
+  --bad-soft: #2e1d19;
+  --info: #93aed6;
+  --info-soft: #1c2433;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Source Serif 4 Variable", ui-serif, Georgia, "Times New Roman", serif;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.prose-reading p + p {
+  margin-top: 1em;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-in {
+  animation: fade-up 220ms ease-out both;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.rec-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
